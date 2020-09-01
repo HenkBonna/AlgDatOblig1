@@ -45,6 +45,7 @@ public class Oblig1 {
     /// 7a)
     public static String flett(String s, String t) {
         throw new UnsupportedOperationException();
+        
     }
 
     /// 7b)
