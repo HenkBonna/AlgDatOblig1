@@ -33,12 +33,45 @@ public class Oblig1 {
 
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
-        throw new UnsupportedOperationException();
+        rotasjon(a, 1);
     }
 
     ///// Oppgave 6 //////////////////////////////////////
     public static void rotasjon(char[] a, int k) {
-        throw new UnsupportedOperationException();
+        // Ikke gjør noe hvis ingen eller ett element
+        if (a.length < 2) {
+            return;
+        }
+
+        if (k > 0) {
+            // Roter mot høyre
+            for (int i = 0; i < k; i++) {
+                // Verdi som skal settes inn
+                char temp = a[a.length - 1];
+
+                for (int j = a.length - 1; j > 0; j--) {
+                    // Flytt verdi til høyre
+                    a[j] = a[j - 1];
+                }
+
+                // Sett inn igjen verdien vi tok ut
+                a[0] = temp;
+            }
+        } else if (k < 0) {
+            // Roter mot venstre
+            for (int i = 0; i > k; i--) {
+                // Verdi som skal settes inn
+                char temp = a[0];
+
+                for (int j = 0; j < a.length - 1; j++) {
+                    // Flytt verdi til venstre
+                    a[j] = a[j + 1];
+                }
+
+                // Sett inn igjen verdien vi tok ut
+                a[a.length - 1] = temp;
+            }
+        }
     }
 
     ///// Oppgave 7 //////////////////////////////////////
