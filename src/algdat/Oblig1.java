@@ -3,6 +3,7 @@ package algdat;
 ////// Løsningsforslag Oblig 1 ////////////////////////
 
 import java.lang.UnsupportedOperationException;
+import java.util.NoSuchElementException;
 
 public class Oblig1 {
     private Oblig1() {}
@@ -81,7 +82,40 @@ public class Oblig1 {
 
     ///// Oppgave 9 //////////////////////////////////////
     public static int[] tredjeMin(int[] a) {
-        throw new UnsupportedOperationException();
+        if (a.length < 3){
+            throw new NoSuchElementException("Array has to few elements");
+        }
+        int[] begynnelse = {a[0], a[1], a[2]};
+        begynnelse = indekssortering(begynnelse);
+        int minIndex = begynnelse[0], nestMinIndex = begynnelse[1], tredjeMinIndex = begynnelse[2],
+        min = a[minIndex], nestMin = a[nestMinIndex], tredjeMin = a[tredjeMinIndex];
+
+        for (int i = 3; i < a.length; i++){
+            if (a[i] < tredjeMin){
+                if (a[i] < nestMin){
+                    if (a[i] < min){
+                        tredjeMin = nestMin;
+                        nestMin = min;
+                        min = a[i];
+                        tredjeMinIndex = nestMinIndex;
+                        nestMinIndex = minIndex;
+                        minIndex = i;
+                    } else {
+                        tredjeMin = nestMin;
+                        nestMin = a[i];
+                        tredjeMinIndex = nestMinIndex;
+                        nestMinIndex = i;
+                    }
+                } else {
+                    tredjeMin = a[i];
+                    tredjeMinIndex = i;
+                }
+            }
+        }
+
+
+        int[] indekser = {minIndex, nestMinIndex, tredjeMinIndex};
+        return indekser;
     }
 
     ///// Oppgave 10 //////////////////////////////////////
