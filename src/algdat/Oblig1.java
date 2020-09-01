@@ -41,14 +41,13 @@ public class Oblig1 {
         // Verdi som skal settes inn
         char temp = a[a.length - 1];
 
-        for (int i = 0; i < a.length; i++) {
-            // Lagre eksisterende verdi
-            char t = a[i];
-            // Sett inn ny verdi
-            a[i] = temp;
-            // Sett eksisterende som ny verdi
-            temp = t;
+        for (int i = a.length - 1; i > 0; i--) {
+            // Flytt verdi til høyre
+            a[i] = a[i - 1];
         }
+
+        // Sett inn igjen verdien vi tok ut
+        a[0] = temp;
     }
 
     ///// Oppgave 6 //////////////////////////////////////
@@ -64,14 +63,13 @@ public class Oblig1 {
                 // Verdi som skal settes inn
                 char temp = a[a.length - 1];
 
-                for (int j = 0; j < a.length; j++) {
-                    // Lagre eksisterende verdi
-                    char t = a[j];
-                    // Sett inn ny verdi
-                    a[j] = temp;
-                    // Sett eksisterende som ny verdi
-                    temp = t;
+                for (int j = a.length - 1; j > 0; j--) {
+                    // Flytt verdi til høyre
+                    a[j] = a[j - 1];
                 }
+
+                // Sett inn igjen verdien vi tok ut
+                a[0] = temp;
             }
         } else if (k < 0) {
             // Roter mot venstre
@@ -79,15 +77,13 @@ public class Oblig1 {
                 // Verdi som skal settes inn
                 char temp = a[0];
 
-
-                for (int j = a.length - 1; j >= 0; j--) {
-                    // Lagre eksisterende verdi
-                    char t = a[j];
-                    // Sett inn ny verdi
-                    a[j] = temp;
-                    // Sett eksisterende som ny verdi
-                    temp = t;
+                for (int j = 0; j < a.length - 1; j++) {
+                    // Flytt verdi til venstre
+                    a[j] = a[j + 1];
                 }
+
+                // Sett inn igjen verdien vi tok ut
+                a[a.length - 1] = temp;
             }
         }
     }
