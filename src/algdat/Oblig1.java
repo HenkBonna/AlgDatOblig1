@@ -23,7 +23,29 @@ public class Oblig1 {
 
     ///// Oppgave 3 //////////////////////////////////////
     public static int antallUlikeUsortert(int[] a) {
-        throw new UnsupportedOperationException();
+        if(a.length == 0){
+            return 0;
+        } else if (a.length == 1){
+            return 1;
+        }
+
+        int different = 1;
+        boolean seen = false;
+
+        for(int i = 1; i < a.length; i++){
+            for (int j = 0; j < i; j++){
+                if(a[j] == a[i]){
+                    seen = true;
+                    break;
+                }
+            }
+            if (!seen){
+                different++;
+            } else {
+                seen = false;
+            }
+        }
+        return different;
     }
 
     ///// Oppgave 4 //////////////////////////////////////
