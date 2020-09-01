@@ -33,21 +33,7 @@ public class Oblig1 {
 
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
-        // Ikke gjør noe hvis ingen eller ett element
-        if (a.length < 2) {
-            return;
-        }
-
-        // Verdi som skal settes inn
-        char temp = a[a.length - 1];
-
-        for (int i = a.length - 1; i > 0; i--) {
-            // Flytt verdi til høyre
-            a[i] = a[i - 1];
-        }
-
-        // Sett inn igjen verdien vi tok ut
-        a[0] = temp;
+        rotasjon(a, 1);
     }
 
     ///// Oppgave 6 //////////////////////////////////////
