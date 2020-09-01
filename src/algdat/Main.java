@@ -1,8 +1,13 @@
 package algdat;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
 
+        char[] chars = {'a', 'b', 'c'};
+
+        Oblig1.rotasjon(chars, 3);
 
         // Henk tests //
         System.out.println("Test av 7a: ");

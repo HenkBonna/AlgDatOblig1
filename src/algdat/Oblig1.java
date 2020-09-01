@@ -3,6 +3,7 @@ package algdat;
 ////// Løsningsforslag Oblig 1 ////////////////////////
 
 import java.lang.UnsupportedOperationException;
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class Oblig1 {
@@ -62,7 +63,8 @@ public class Oblig1 {
     ///// Oppgave 6 //////////////////////////////////////
     public static void rotasjon(char[] a, int k) {
         // Ikke gjør noe hvis ingen eller ett element
-        if (a.length < 2) {
+        if (a.length < 2 || k % a.length == 0) {
+            System.out.println("Ingenting gjort");
             return;
         }
 
@@ -194,6 +196,11 @@ public class Oblig1 {
 
     ///// Oppgave 8 - Henk //////////////////////////////////////
     public static int[] indekssortering(int[] a) {
+        if(a.length == 0){
+            return new int[]{};
+        } else if(a.length == 1){
+            return new int[]{0};
+        }
 
         // TODO: implement this throw
         // throw new UnsupportedOperationException();
@@ -203,7 +210,7 @@ public class Oblig1 {
         int[] temp = a.clone(); //  First we copy the array, so we can alter it.
 
         int max_val = temp[0];
-        for (int i = 1; i < temp.length; ++i) { // This block finds the largest value in the array
+        for (int i = 1; i < temp.length; i++) { // This block finds the largest value in the array
             if (temp[i] > max_val) {
                 max_val = temp[i];
             }
@@ -219,7 +226,7 @@ public class Oblig1 {
                 }
             }
             indicesSorted[i] = minIndex;                // and add it to the current position.
-            temp[minIndex] = max_val+i;                 // Finally, we (hackily) assure that this value won't be the next.
+            temp[minIndex] = (max_val+1);                 // Finally, we (hackily) assure that this value won't be the next.
         }
         // If we were to look at the temp array, we would see that all it's values are larger than –or equal to–
         // the largest entry in a. This is a sorta hacky solution, to be sure, but it works.
