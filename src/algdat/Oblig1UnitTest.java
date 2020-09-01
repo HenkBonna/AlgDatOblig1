@@ -1,6 +1,8 @@
 package algdat;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.Arrays;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Denne klassen kan du bruke til hjelp under utvikling av din oblig.
@@ -35,7 +37,16 @@ class Oblig1UnitTest {
 
     @org.junit.jupiter.api.Test
     void rotasjon() {
-        assertEquals(true, false, "Implementer rotasjon og denne testen");
+        // Tester oppgave 5
+        char[] a = {'A', 'B', 'C'};
+        Oblig1.rotasjon(a);
+
+        assertEquals(Arrays.toString(new char[]{'C', 'A', 'B'}), Arrays.toString(a));
+        assertEquals('C', a[0]);
+        assertEquals('A', a[1]);
+        assertEquals('B', a[2]);
+
+
     }
 
     @org.junit.jupiter.api.Test
