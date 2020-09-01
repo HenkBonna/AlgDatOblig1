@@ -43,10 +43,18 @@ public class Oblig1 {
 
     ///// Oppgave 7 - Henk //////////////////////////////////////
     /// 7a)
+
+    /* Notes on 7a
+    There is quite possibly a simpler method of handling this, with a StringBuilder, a String or even
+    an arrayList. However, I tried to make it adaptable to other data-types than chars/strings. Hence,
+    I created empty arrays to be filled, and then –later– be displayed.
+    */
     public static String flett(String s, String t) {
 
-        //TODO this throw below me
+        // TODO this throw below me
         //throw new UnsupportedOperationException();
+
+        // TODO: make tests to see if it ACTUALLY works
 
         char[] charArray_s = s.toCharArray();
         char[] charArray_t = t.toCharArray();
@@ -106,6 +114,8 @@ public class Oblig1 {
         //TODO this throw below me
         //throw new UnsupportedOperationException();
 
+        // TODO: make tests to see if it ACTUALLY works
+
 
         String out = "";
         int totalLength = 0;
@@ -128,7 +138,38 @@ public class Oblig1 {
 
     ///// Oppgave 8 - Henk //////////////////////////////////////
     public static int[] indekssortering(int[] a) {
-        throw new UnsupportedOperationException();
+
+        // TODO: implement this throw
+        // throw new UnsupportedOperationException();
+
+        // TODO: make tests to see if it ACTUALLY works
+
+        int[] temp = a.clone(); //  First we copy the array, so we can alter it.
+
+        int max_val = temp[0];
+        for (int i = 1; i < temp.length; ++i) { // This block finds the largest value in the array
+            if (temp[i] > max_val) {
+                max_val = temp[i];
+            }
+        }
+
+        int[] indicesSorted = new int[a.length];    // Create an empty array to be filled with the sorted indices
+
+        for(int i = 0; i < indicesSorted.length; ++i){  // For each position in the empty array,
+            int minIndex = 0;
+            for (int j = 1; j < temp.length; ++j){      // we search for the smallest value
+                if (temp[j] < temp[minIndex]){
+                    minIndex = j;
+                }
+            }
+            indicesSorted[i] = minIndex;                // and add it to the current position.
+            temp[minIndex] = max_val+i;                 // Finally, we (hackily) assure that this value won't be the next.
+        }
+        // If we were to look at the temp array, we would see that all it's values are larger than –or equal to–
+        // the largest entry in a. This is a sorta hacky solution, to be sure, but it works.
+
+        return indicesSorted;
+
     }
 
     ///// Oppgave 9 //////////////////////////////////////

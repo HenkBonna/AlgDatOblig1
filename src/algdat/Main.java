@@ -15,6 +15,16 @@ public class Main {
         System.out.println("Test av 7b:");
         System.out.println(Oblig1.flett("AM ","L","GEDS","ORATKRR","","R TRTE","IO","TGAUU"));
         System.out.println(Oblig1.flett("AAA","aaa","cccCCCC", "444"));
+        System.out.println();
+        System.out.println("Test av 8:");
+
+        int[] a = {6,10,16,11,7,12,3,8,9,5};
+
+        int[] indeks = Oblig1.indekssortering(a);
+
+        for(int i=0;i<a.length;++i) {
+            System.out.print(a[indeks[i]] + " ");
+        }
 
 
 
