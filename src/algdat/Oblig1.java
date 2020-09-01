@@ -92,23 +92,28 @@ public class Oblig1 {
 
         for (int i = 3; i < a.length; i++){
             if (a[i] < tredjeMin){
+
                 if (a[i] < nestMin){
-                    if (a[i] < min){
-                        tredjeMin = nestMin;
-                        nestMin = min;
-                        min = a[i];
-                        tredjeMinIndex = nestMinIndex;
-                        nestMinIndex = minIndex;
-                        minIndex = i;
-                    } else {
-                        tredjeMin = nestMin;
-                        nestMin = a[i];
-                        tredjeMinIndex = nestMinIndex;
-                        nestMinIndex = i;
+                    
+                    if (a[i] < min){ //nytt minstetall
+                        tredjeMin = nestMin; //flytter nestminst til tredjeminst
+                        nestMin = min; //flytter forrige minst til nestminst
+                        min = a[i]; //oppdaterer minst
+
+                        tredjeMinIndex = nestMinIndex; //flytter indeks til nest minst til indeks til tredjeminst
+                        nestMinIndex = minIndex; //flytter indeks til forrige minst til nest minst
+                        minIndex = i; //lagrer ny minste indeks
+                    } else { //nytt nestminstetall
+                        tredjeMin = nestMin; //flytter nestminst til tredjeminst
+                        nestMin = a[i]; //lagrer ny  nestminst
+
+                        tredjeMinIndex = nestMinIndex; //flytter indeks til nest minst til indeks til tredjeminst
+                        nestMinIndex = i; //lagrer ny nestminst indeks
                     }
-                } else {
-                    tredjeMin = a[i];
-                    tredjeMinIndex = i;
+                } else { //nytt tredjeminstetall
+                    tredjeMin = a[i]; //lagrer ny tredjeminst
+
+                    tredjeMinIndex = i; //lagrer ny tredjeminst indeks
                 }
             }
         }
