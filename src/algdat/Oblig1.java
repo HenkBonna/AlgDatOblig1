@@ -144,6 +144,12 @@ public class Oblig1 {
 
         // TODO: make tests to see if it ACTUALLY works
 
+        if(a.length == 0){
+            return new int[]{};
+        } else if(a.length == 1){
+            return new int[]{0};
+        }
+
         int[] temp = a.clone(); //  First we copy the array, so we can alter it.
 
         int max_val = temp[0];
@@ -163,7 +169,7 @@ public class Oblig1 {
                 }
             }
             indicesSorted[i] = minIndex;                // and add it to the current position.
-            temp[minIndex] = max_val+i;                 // Finally, we (hackily) assure that this value won't be the next.
+            temp[minIndex] = max_val+1;                 // Finally, we (hackily) assure that this value won't be the next.
         }
         // If we were to look at the temp array, we would see that all it's values are larger than –or equal to–
         // the largest entry in a. This is a sorta hacky solution, to be sure, but it works.
