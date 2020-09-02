@@ -3,22 +3,69 @@ package algdat;
 ////// Løsningsforslag Oblig 1 ////////////////////////
 
 import java.lang.UnsupportedOperationException;
+import java.util.NoSuchElementException;
 
 public class Oblig1 {
     private Oblig1() {}
 
     ///// Oppgave 1 //////////////////////////////////////
     public static int maks(int[] a) {
-        throw new UnsupportedOperationException();
+        if (a.length == 0){
+            throw new NoSuchElementException("Det finnes ingen elementer i arrayet!");
+        }
+        else if(a.length == 1){
+            return a[0];
+        }
+        else {
+            int[] temp = new int[1];
+            for (int i = 1; i < a.length; i++) {
+                if (a[i] < a[i - 1]) {
+                    temp[0] = a[i - 1];
+                    a[i - 1] = a[i];
+                    a[i] = temp[0];
+                }
+            }
+            return a[a.length - 1];
+        }
     }
 
     public static int ombyttinger(int[] a) {
-        throw new UnsupportedOperationException();
+        int ombyttinger = 0;
+        if (a.length == 0){
+            throw new NoSuchElementException("Det finnes ingen elementer i arrayet!");
+        }
+        else if(a.length == 1){
+            return 0;
+        }
+        else {
+            int[] temp = new int[1];
+            for (int i = 1; i < a.length; i++) {
+                if (a[i] < a[i - 1]) {
+                    temp[0] = a[i - 1];
+                    a[i - 1] = a[i];
+                    a[i] = temp[0];
+                    ombyttinger++;
+                }
+            }
+        }
+        return ombyttinger;
     }
 
     ///// Oppgave 2 //////////////////////////////////////
     public static int antallUlikeSortert(int[] a) {
-        throw new UnsupportedOperationException();
+        if (a.length == 0){
+            return 0;
+        }
+        int antallUlike = 1;
+        for(int i = 1; i < a.length; i++){
+            if (a[i] < a[i-1]){
+                throw new IllegalStateException("Arrayet er ikke sortert!");
+            }
+            else if (a[i] > a[i-1]){
+                antallUlike++;
+            }
+        }
+        return antallUlike;
     }
 
     ///// Oppgave 3 //////////////////////////////////////
