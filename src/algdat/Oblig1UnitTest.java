@@ -53,6 +53,14 @@ class Oblig1UnitTest {
         char[] c = {'A', 'B', 'C', 'D', 'E'};
         Oblig1.rotasjon(c, -2);
         assertEquals(Arrays.toString(new char[]{'C', 'D', 'E', 'A', 'B'}), Arrays.toString(c));
+
+        // Test tid
+        char[] x = new char[100_000];
+        long tid = System.currentTimeMillis();
+        Oblig1.rotasjon(x, 50_000);
+        tid = System.currentTimeMillis() - tid;
+
+        System.out.println("rotasjon brukte " + tid + "ms.");
     }
 
     @org.junit.jupiter.api.Test
