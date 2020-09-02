@@ -68,33 +68,35 @@ public class Oblig1 {
         // I tilfelle arrayet roterer mer enn en hel runde
         int k = k0 % a.length;
 
+        // klon arrayet, så vi kan finne igjen original verdi under rotering
+        // litt juks?
+        char[] b = a.clone();
+
         if (k > 0) {
             // Roter mot høyre
-            for (int i = 0; i < k; i++) {
-                // Verdi som skal settes inn
-                char temp = a[a.length - 1];
-
-                for (int j = a.length - 1; j > 0; j--) {
-                    // Flytt verdi til høyre
-                    a[j] = a[j - 1];
+            for (int j = a.length - 1; j >= 0; j--) {
+                // Indeks til tall som skal flyttes til j.
+                int indeks = j - k;
+                // Hvis indeksen er mindre enn 0, juster den
+                if (indeks < 0) {
+                    indeks = a.length + indeks;
                 }
 
-                // Sett inn igjen verdien vi tok ut
-                a[0] = temp;
+                // Flytt verdi til høyre
+                a[j] = b[indeks];
             }
         } else if (k < 0) {
             // Roter mot venstre
-            for (int i = 0; i > k; i--) {
-                // Verdi som skal settes inn
-                char temp = a[0];
-
-                for (int j = 0; j < a.length - 1; j++) {
-                    // Flytt verdi til venstre
-                    a[j] = a[j + 1];
+            for (int j = 0; j <= a.length - 1; j++) {
+                // Indeks til tall som skal flyttes til j.
+                int indeks = j - k; // k er her negativ, så vi bruker minus for å få pluss
+                // Hvis indeksen er mer enn siste indeks, juster den
+                if (indeks > a.length - 1) {
+                    indeks = indeks - a.length;
                 }
 
-                // Sett inn igjen verdien vi tok ut
-                a[a.length - 1] = temp;
+                // Flytt verdi til venstre
+                a[j] = b[indeks];
             }
         }
     }
