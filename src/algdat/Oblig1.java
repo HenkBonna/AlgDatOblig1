@@ -59,11 +59,14 @@ public class Oblig1 {
     }
 
     ///// Oppgave 6 //////////////////////////////////////
-    public static void rotasjon(char[] a, int k) {
+    public static void rotasjon(char[] a, int k0) {
         // Ikke gjør noe hvis ingen eller ett element
         if (a.length < 2) {
             return;
         }
+
+        // I tilfelle arrayet roterer mer enn en hel runde
+        int k = k0 % a.length;
 
         if (k > 0) {
             // Roter mot høyre
