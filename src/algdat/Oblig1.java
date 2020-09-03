@@ -1,6 +1,6 @@
 package algdat;
 
-////// Løsningsforslag Oblig 1 ////////////////////////
+////// Losningsforslag Oblig 1 ////////////////////////
 
 import java.lang.UnsupportedOperationException;
 
@@ -60,7 +60,7 @@ public class Oblig1 {
 
     ///// Oppgave 6 //////////////////////////////////////
     public static void rotasjon(char[] a, int k0) {
-        // Ikke gjør noe hvis ingen eller ett element, eller k er 0.
+        // Ikke gjor noe hvis ingen eller ett element, eller k er 0.
         if (a.length < 2 || k0 % a.length == 0) {
             return;
         }
@@ -68,12 +68,12 @@ public class Oblig1 {
         // I tilfelle arrayet roterer mer enn en hel runde
         int k = k0 % a.length;
 
-        // klon arrayet, så vi kan finne igjen original verdi under rotering
+        // klon arrayet, sa vi kan finne igjen original verdi under rotering
         // litt juks?
         char[] b = a.clone();
 
         if (k > 0) {
-            // Roter mot høyre
+            // Roter mot hoyre
             for (int i = a.length - 1; i >= 0; i--) {
                 // Indeks til tall som skal flyttes til i.
                 int indeks = i - k;
@@ -82,14 +82,14 @@ public class Oblig1 {
                     indeks += a.length;
                 }
 
-                // Flytt verdi til høyre
+                // Flytt verdi til hoyre
                 a[i] = b[indeks];
             }
         } else if (k < 0) {
             // Roter mot venstre
             for (int i = 0; i <= a.length - 1; i++) {
                 // Indeks til tall som skal flyttes til i.
-                int indeks = i - k; // k er her negativ, så vi bruker minus for å få pluss
+                int indeks = i - k; // k er her negativ, sa vi bruker minus for a fa pluss
                 // Hvis indeksen er mer enn siste indeks, juster den
                 if (indeks > a.length - 1) {
                     indeks -= a.length;
