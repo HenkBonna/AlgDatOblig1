@@ -1,6 +1,6 @@
 package algdat;
 
-////// Løsningsforslag Oblig 1 ////////////////////////
+////// Losningsforslag Oblig 1 ////////////////////////
 
 import java.lang.UnsupportedOperationException;
 import java.util.NoSuchElementException;
@@ -70,7 +70,29 @@ public class Oblig1 {
 
     ///// Oppgave 3 //////////////////////////////////////
     public static int antallUlikeUsortert(int[] a) {
-        throw new UnsupportedOperationException();
+        if(a.length == 0){
+            return 0;
+        } else if (a.length == 1){
+            return 1;
+        }
+
+        int different = 1;
+        boolean seen = false;
+
+        for(int i = 1; i < a.length; i++){
+            for (int j = 0; j < i; j++){
+                if(a[j] == a[i]){
+                    seen = true;
+                    break;
+                }
+            }
+            if (!seen){
+                different++;
+            } else {
+                seen = false;
+            }
+        }
+        return different;
     }
 
     ///// Oppgave 4 //////////////////////////////////////
@@ -80,12 +102,50 @@ public class Oblig1 {
 
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
-        throw new UnsupportedOperationException();
+        rotasjon(a, 1);
     }
 
     ///// Oppgave 6 //////////////////////////////////////
-    public static void rotasjon(char[] a, int k) {
-        throw new UnsupportedOperationException();
+    public static void rotasjon(char[] a, int k0) {
+        // Ikke gjor noe hvis ingen eller ett element, eller k er 0.
+        if (a.length < 2 || k0 % a.length == 0) {
+            return;
+        }
+
+        // I tilfelle arrayet roterer mer enn en hel runde
+        int k = k0 % a.length;
+
+        // klon arrayet, sa vi kan finne igjen original verdi under rotering
+        // litt juks?
+        char[] b = a.clone();
+
+        if (k > 0) {
+            // Roter mot hoyre
+            for (int i = a.length - 1; i >= 0; i--) {
+                // Indeks til tall som skal flyttes til i.
+                int indeks = i - k;
+                // Hvis indeksen er mindre enn 0, juster den
+                if (indeks < 0) {
+                    indeks += a.length;
+                }
+
+                // Flytt verdi til hoyre
+                a[i] = b[indeks];
+            }
+        } else if (k < 0) {
+            // Roter mot venstre
+            for (int i = 0; i <= a.length - 1; i++) {
+                // Indeks til tall som skal flyttes til i.
+                int indeks = i - k; // k er her negativ, sa vi bruker minus for a fa pluss
+                // Hvis indeksen er mer enn siste indeks, juster den
+                if (indeks > a.length - 1) {
+                    indeks -= a.length;
+                }
+
+                // Flytt verdi til venstre
+                a[i] = b[indeks];
+            }
+        }
     }
 
     ///// Oppgave 7 //////////////////////////////////////
