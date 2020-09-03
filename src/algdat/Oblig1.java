@@ -60,8 +60,8 @@ public class Oblig1 {
 
     ///// Oppgave 6 //////////////////////////////////////
     public static void rotasjon(char[] a, int k0) {
-        // Ikke gjør noe hvis ingen eller ett element
-        if (a.length < 2) {
+        // Ikke gjør noe hvis ingen eller ett element, eller k er 0.
+        if (a.length < 2 || k0 % a.length == 0) {
             return;
         }
 
@@ -79,7 +79,7 @@ public class Oblig1 {
                 int indeks = i - k;
                 // Hvis indeksen er mindre enn 0, juster den
                 if (indeks < 0) {
-                    indeks = a.length + indeks;
+                    indeks += a.length;
                 }
 
                 // Flytt verdi til høyre
@@ -92,7 +92,7 @@ public class Oblig1 {
                 int indeks = i - k; // k er her negativ, så vi bruker minus for å få pluss
                 // Hvis indeksen er mer enn siste indeks, juster den
                 if (indeks > a.length - 1) {
-                    indeks = indeks - a.length;
+                    indeks -= a.length;
                 }
 
                 // Flytt verdi til venstre
