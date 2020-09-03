@@ -1,6 +1,6 @@
 package algdat;
 
-////// Løsningsforslag Oblig 1 ////////////////////////
+////// Losningsforslag Oblig 1 ////////////////////////
 
 import java.lang.UnsupportedOperationException;
 import java.util.Arrays;
@@ -11,16 +11,62 @@ public class Oblig1 {
 
     ///// Oppgave 1 //////////////////////////////////////
     public static int maks(int[] a) {
-        throw new UnsupportedOperationException();
+        if (a.length == 0){
+            throw new NoSuchElementException("Det finnes ingen elementer i arrayet!");
+        }
+        else if(a.length == 1){
+            return a[0];
+        }
+        else {
+            int[] temp = new int[1];
+            for (int i = 1; i < a.length; i++) {
+                if (a[i] < a[i - 1]) {
+                    temp[0] = a[i - 1];
+                    a[i - 1] = a[i];
+                    a[i] = temp[0];
+                }
+            }
+            return a[a.length - 1];
+        }
     }
 
     public static int ombyttinger(int[] a) {
-        throw new UnsupportedOperationException();
+        int ombyttinger = 0;
+        if (a.length == 0){
+            throw new NoSuchElementException("Det finnes ingen elementer i arrayet!");
+        }
+        else if(a.length == 1){
+            return 0;
+        }
+        else {
+            int[] temp = new int[1];
+            for (int i = 1; i < a.length; i++) {
+                if (a[i] < a[i - 1]) {
+                    temp[0] = a[i - 1];
+                    a[i - 1] = a[i];
+                    a[i] = temp[0];
+                    ombyttinger++;
+                }
+            }
+        }
+        return ombyttinger;
     }
 
     ///// Oppgave 2 //////////////////////////////////////
     public static int antallUlikeSortert(int[] a) {
-        throw new UnsupportedOperationException();
+        if (a.length == 0){
+            return 0;
+        }
+        int antallUlike = 1;
+        for(int i = 1; i < a.length; i++){
+            if (a[i] < a[i-1]){
+                throw new IllegalStateException("Arrayet er ikke sortert!");
+            }
+            else if (a[i] > a[i-1]){
+                antallUlike++;
+            }
+        }
+        return antallUlike;
     }
 
     ///// Oppgave 3 //////////////////////////////////////
@@ -61,40 +107,44 @@ public class Oblig1 {
     }
 
     ///// Oppgave 6 //////////////////////////////////////
-    public static void rotasjon(char[] a, int k) {
-        // Ikke gjør noe hvis ingen eller ett element
-        if (a.length < 2 || k % a.length == 0) {
-            System.out.println("Ingenting gjort");
+    public static void rotasjon(char[] a, int k0) {
+        // Ikke gjor noe hvis ingen eller ett element, eller k er 0.
+        if (a.length < 2 || k0 % a.length == 0) {
             return;
         }
 
-        if (k > 0) {
-            // Roter mot høyre
-            for (int i = 0; i < k; i++) {
-                // Verdi som skal settes inn
-                char temp = a[a.length - 1];
+        // I tilfelle arrayet roterer mer enn en hel runde
+        int k = k0 % a.length;
 
-                for (int j = a.length - 1; j > 0; j--) {
-                    // Flytt verdi til høyre
-                    a[j] = a[j - 1];
+        // klon arrayet, sa vi kan finne igjen original verdi under rotering
+        // litt juks?
+        char[] b = a.clone();
+
+        if (k > 0) {
+            // Roter mot hoyre
+            for (int i = a.length - 1; i >= 0; i--) {
+                // Indeks til tall som skal flyttes til i.
+                int indeks = i - k;
+                // Hvis indeksen er mindre enn 0, juster den
+                if (indeks < 0) {
+                    indeks += a.length;
                 }
 
-                // Sett inn igjen verdien vi tok ut
-                a[0] = temp;
+                // Flytt verdi til hoyre
+                a[i] = b[indeks];
             }
         } else if (k < 0) {
             // Roter mot venstre
-            for (int i = 0; i > k; i--) {
-                // Verdi som skal settes inn
-                char temp = a[0];
-
-                for (int j = 0; j < a.length - 1; j++) {
-                    // Flytt verdi til venstre
-                    a[j] = a[j + 1];
+            for (int i = 0; i <= a.length - 1; i++) {
+                // Indeks til tall som skal flyttes til i.
+                int indeks = i - k; // k er her negativ, sa vi bruker minus for a fa pluss
+                // Hvis indeksen er mer enn siste indeks, juster den
+                if (indeks > a.length - 1) {
+                    indeks -= a.length;
                 }
 
-                // Sett inn igjen verdien vi tok ut
-                a[a.length - 1] = temp;
+                // Flytt verdi til venstre
+                a[i] = b[indeks];
             }
         }
     }
