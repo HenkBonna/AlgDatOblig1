@@ -74,29 +74,29 @@ public class Oblig1 {
 
         if (k > 0) {
             // Roter mot høyre
-            for (int j = a.length - 1; j >= 0; j--) {
-                // Indeks til tall som skal flyttes til j.
-                int indeks = j - k;
+            for (int i = a.length - 1; i >= 0; i--) {
+                // Indeks til tall som skal flyttes til i.
+                int indeks = i - k;
                 // Hvis indeksen er mindre enn 0, juster den
                 if (indeks < 0) {
                     indeks = a.length + indeks;
                 }
 
                 // Flytt verdi til høyre
-                a[j] = b[indeks];
+                a[i] = b[indeks];
             }
         } else if (k < 0) {
             // Roter mot venstre
-            for (int j = 0; j <= a.length - 1; j++) {
-                // Indeks til tall som skal flyttes til j.
-                int indeks = j - k; // k er her negativ, så vi bruker minus for å få pluss
+            for (int i = 0; i <= a.length - 1; i++) {
+                // Indeks til tall som skal flyttes til i.
+                int indeks = i - k; // k er her negativ, så vi bruker minus for å få pluss
                 // Hvis indeksen er mer enn siste indeks, juster den
                 if (indeks > a.length - 1) {
                     indeks = indeks - a.length;
                 }
 
                 // Flytt verdi til venstre
-                a[j] = b[indeks];
+                a[i] = b[indeks];
             }
         }
     }
