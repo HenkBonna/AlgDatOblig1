@@ -116,11 +116,39 @@ public class Oblig1 {
         // I tilfelle arrayet roterer mer enn en hel runde
         int k = k0 % a.length;
 
-        // klon arrayet, sa vi kan finne igjen original verdi under rotering
-        // litt juks?
-        char[] b = a.clone();
+        // Bruker med effektiv algoritmen for når k er 1 og -1
+        // denne trenger ikke kloning av arrayet.
+        // Hovedalgoritmen begynner lenger ned, ved else if (k > 0).
+        if (k == 1) {
+            // Roter mot høyre
 
-        if (k > 0) {
+            // Verdi som skal settes inn
+            char temp = a[a.length - 1];
+
+            for (int j = a.length - 1; j > 0; j--) {
+                // Flytt verdi til høyre
+                a[j] = a[j - 1];
+            }
+
+            // Sett inn igjen verdien vi tok ut
+            a[0] = temp;
+        } else if (k == -1) {
+            // Roter mot venstre
+
+            // Verdi som skal settes inn
+            char temp = a[0];
+
+            for (int j = 0; j < a.length - 1; j++) {
+                // Flytt verdi til venstre
+                a[j] = a[j + 1];
+            }
+
+            // Sett inn igjen verdien vi tok ut
+            a[a.length - 1] = temp;
+        } else if (k > 0) {
+            // klon arrayet, sa vi kan finne igjen original verdi under rotering. Litt juks?
+            char[] b = a.clone();
+
             // Roter mot hoyre
             for (int i = a.length - 1; i >= 0; i--) {
                 // Indeks til tall som skal flyttes til i.
@@ -134,6 +162,9 @@ public class Oblig1 {
                 a[i] = b[indeks];
             }
         } else if (k < 0) {
+            // klon arrayet, sa vi kan finne igjen original verdi under rotering
+            char[] b = a.clone();
+
             // Roter mot venstre
             for (int i = 0; i <= a.length - 1; i++) {
                 // Indeks til tall som skal flyttes til i.
