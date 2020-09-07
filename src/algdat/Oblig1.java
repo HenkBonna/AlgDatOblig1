@@ -98,7 +98,61 @@ public class Oblig1 {
 
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
+        int n = a.length;
+
+        if(n < 2){      //Hvis tabellen har mindre enn 2 elementer så gjøres ingen ting
+            return;
+        }
+        int oddetall = 0;
+        for (int i = 0; i < a.length; i++){         //Teller opp antall oddetall
+            if (a[i]% 2 == 1){
+                oddetall++;
+            }
+        }
+
+        if (!(oddetall == 0 || oddetall > n)){
+
+            for (int i = 0; i < oddetall; i++)
+                //Hvis indeks ikke er oddetall
+                if (a[i]%2 != 1){
+                    for (int j = i + 1; j < n; j++){
+                        if (a[j]%2 == 1){
+                            int temp = a[i];
+                            a[i] = a[j];
+                            a[j] = temp;
+                            break;
+                        }
+                    }
+                }
+
+            for (int i = 0; i < n - oddetall - 1; i++){  //Sorter oddetall i separat intervall
+
+                for (int j = 0; j < n - oddetall - 1; j++){
+
+                    if (a[j] > a[j+1]){
+                        int temp = a[j];
+                        a[j] = a[j+1];
+                        a[j+1] = temp;
+                    }
+                }
+            }
+
+            for (int i = oddetall; i < n - 1; i++){
+
+                for (int j = oddetall; j < n - 1; j++){     //Sorter partall i separat intervall
+
+                    if (a[j] > a[j+1]){
+                        int temp = a[j];
+                        a[j] = a[j+1];
+                        a[j+1] = temp;
+                    }
+                }
+            }
+        }
+        else{
+            //Sorter hele tabellen, fordi det er kun partall eller kun oddetall
+        }
     }
 
     ///// Oppgave 5 //////////////////////////////////////

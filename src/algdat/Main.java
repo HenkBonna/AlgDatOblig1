@@ -23,13 +23,23 @@ public class Main {
         System.out.println();
         System.out.println("Test av 8:");
 
-        int[] a = {6,10,16,11,7,12,3,8,9,5};
+        //int[] a = {6,10,16,11,7,12,3,8,9,5};
+        int[] a = {6,10,9,4,1,3,8,5,2,7};
+        //int[] a = {1,2,3,4,5,6};
 
         int[] indeks = Oblig1.indekssortering(a);
 
         for(int i=0;i<a.length;++i) {
             System.out.print(a[indeks[i]] + " ");
         }
+        System.out.println();
+
+
+
+        System.out.println("Test av 4:");
+        System.out.println(Arrays.toString(a));
+        Oblig1.delsortering(a);
+        System.out.println(Arrays.toString(a));
 
     }
 }
