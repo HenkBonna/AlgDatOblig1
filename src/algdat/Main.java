@@ -42,5 +42,12 @@ public class Main {
         Oblig1.delsortering(a);
         System.out.println(Arrays.toString(a));
 
+        int val = 'A';
+        System.out.println(val);
+
+        int[] test = {'A', 'B'};
+        System.out.println(Arrays.toString(test));
+        System.out.println(Oblig1.inneholdt("abba", "abba"));
+
     }
 }

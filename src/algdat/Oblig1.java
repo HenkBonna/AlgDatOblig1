@@ -7,6 +7,7 @@ package algdat;
 // Patrick Snorreson Sletvold, s344102
 // Kristian Kasin Wang, s344088
 
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class Oblig1 {
@@ -474,7 +475,18 @@ public class Oblig1 {
             }
         }
 
-        return true;
+        boolean matcherDet = false;
+        for (int i = 0; i < antallA.length; i++){
+            if (antallA[i] != 0){
+                if (antallA[i] >= antallB[i]){
+                    matcherDet = true;
+                }
+                else{
+                    return false;
+                }
+            }
+        }
+        return matcherDet;
     }
 
 }  // Oblig1
