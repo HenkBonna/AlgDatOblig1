@@ -1,6 +1,11 @@
 package algdat;
 
-////// Losningsforslag Oblig 1 ////////////////////////
+////// Losning Oblig 1 ////////////////////////
+// Sander Toien, s344045
+// Mats Ove Vada, s340363
+// Henrik Berhard Stangelang, s344104
+// Patrick Snorreson Sletvold, s344102
+// Kristian Kasin Wang, s344088
 
 import java.util.NoSuchElementException;
 
@@ -92,7 +97,95 @@ public class Oblig1 {
 
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
-        throw new UnsupportedOperationException();
+        int n = a.length;
+
+        if (n < 2) {
+            // Hvis tabellen har mindre enn 2 elementer sa gjores ingen ting
+            return;
+        }
+        int oddetall = 0;
+
+
+        for (int i = 0; i < a.length; i++) {
+            // Teller opp antall oddetall
+            if (Math.abs(a[i] % 2) == 1) {
+                oddetall++;
+            }
+        }
+
+        //Hvis tabellen bestar kun av partall eller oddetall,
+        //sa sorteres hele tabellen, hvis ikke, sa sorteres
+        //hver sin side av tabellen, oddetall og partall separat.
+        if (!(oddetall == 0 || oddetall > n)) {
+            int v = 0;
+            int h = n - 1;
+
+            while (v < h) {
+                while (Math.abs(a[v]) % 2 != 0) {
+                    v++;
+                    if (v == h) {
+                        break;
+                    }
+                }
+                while (Math.abs(a[h]) % 2 != 1 && h != v) {
+                    h--;
+                    if (v == h) {
+                        break;
+                    }
+                }
+                bytt(a, v, h);
+            }
+
+            // Sorter venstre/oddetall
+            quicksort(a, 0, oddetall - 1);
+            // Sorter hoyre/partall
+            quicksort(a, oddetall, n - 1);
+        } else {
+            quicksort(a, 0, n - 1);
+        }
+    }
+
+    public static void quicksort(int[] a, int v, int h) {
+        if (v >= h) {
+            return;
+        }
+        int pivot = partisjonerpivot(a, v, h, (v + h) / 2);
+
+        quicksort(a, v, pivot - 1);
+        quicksort(a, pivot + 1, h);
+
+    }
+
+    public static int partisjoner(int[] a, int v, int h, int pivot) {
+
+        while (true) {
+
+            while (v <= h && a[v] < pivot) {
+                v++;
+            }
+            while (v <= h && a[h] >= pivot) {
+                h--;
+            }
+
+            if (v < h) {
+                bytt(a, v++, h--);
+            } else {
+                return v;
+            }
+        }
+    }
+
+    public static int partisjonerpivot(int[] a, int v, int h, int pivot) {
+        bytt(a, pivot, h);
+        int pivotpos = partisjoner(a, v, h - 1, a[h]);
+        bytt(a, pivotpos, h);
+        return pivotpos;
+    }
+
+    public static void bytt(int[] a, int i, int j) {
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
     }
 
     ///// Oppgave 5 //////////////////////////////////////
@@ -110,17 +203,17 @@ public class Oblig1 {
         // I tilfelle arrayet roterer mer enn en hel runde
         int k = k0 % a.length;
 
-        // Bruker med effektiv algoritmen for når k er 1 og -1
+        // Bruker med effektiv algoritmen for nar k er 1 og -1
         // denne trenger ikke kloning av arrayet.
         // Hovedalgoritmen begynner lenger ned, ved else if (k > 0).
         if (k == 1) {
-            // Roter mot høyre
+            // Roter mot hoyre
 
             // Verdi som skal settes inn
             char temp = a[a.length - 1];
 
             for (int j = a.length - 1; j > 0; j--) {
-                // Flytt verdi til høyre
+                // Flytt verdi til hoyre
                 a[j] = a[j - 1];
             }
 
