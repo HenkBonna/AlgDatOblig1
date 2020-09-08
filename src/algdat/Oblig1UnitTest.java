@@ -111,5 +111,7 @@ class Oblig1UnitTest {
         // Tester oppgave 10
         assertTrue(Oblig1.inneholdt("ABC", "AABBCD"));
         assertFalse(Oblig1.inneholdt("ABCØ", "AABBCD"));
+        assertTrue(Oblig1.inneholdt("", "ABC"));
+        assertFalse(Oblig1.inneholdt("ABC", ""));
     }
 }
