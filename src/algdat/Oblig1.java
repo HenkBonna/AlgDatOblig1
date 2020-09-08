@@ -99,6 +99,8 @@ public class Oblig1 {
             return;
         }
         int oddetall = 0;
+
+
         for (int i = 0; i < a.length; i++) {
             // Teller opp antall oddetall
             if (Math.abs(a[i] % 2) == 1) {
@@ -106,19 +108,23 @@ public class Oblig1 {
             }
         }
 
+        long tid = System.currentTimeMillis();
         //Hvis tabellen består kun av partall eller oddetall,
         //så sorteres hele tabellen, hvis ikke, så sorteres
         //hver sin side av tabellen, oddetall og partall separat.
         if (!(oddetall == 0 || oddetall > n)){
-            for (int i = 0; i < oddetall; i++) {
-                if (Math.abs(a[i] % 2) != 1) {
-                    for (int j = i + 1; j < n; j++) {
-                        if (Math.abs(a[j] % 2) == 1) {
-                            bytt(a, i, j);
-                            break;
-                        }
-                    }
+            int v = 0;
+            int h = n - 1;
+
+            while (v < h){
+                while (Math.abs(a[v])%2 != 0 && v > 0) {
+                    v++;
                 }
+                while (Math.abs(a[h])%2 != 1 && h < n) {
+                    h--;
+                }
+                bytt(a, v, h);
+                v++; h--;
             }
 
             // Sorter venstre/oddetall
@@ -126,10 +132,11 @@ public class Oblig1 {
             // Sorter høyre/partall
             quicksort(a, oddetall, n - 1);
         } else {
-            quicksort(a, 0, a.length - 1);
+            quicksort(a, 0, n - 1);
         }
 
-
+        tid = System.currentTimeMillis() - tid;
+        System.out.println(tid +" ms for odde/partall");
     }
 
     public static void quicksort(int[] a, int v, int h) {
