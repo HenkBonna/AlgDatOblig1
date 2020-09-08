@@ -105,7 +105,6 @@ public class Oblig1 {
         }
         int oddetall = 0;
 
-
         for (int i = 0; i < a.length; i++) {
             // Teller opp antall oddetall
             if (Math.abs(a[i] % 2) == 1) {
@@ -141,6 +140,7 @@ public class Oblig1 {
             // Sorter hoyre/partall
             quicksort(a, oddetall, n - 1);
         } else {
+            // Sorterer hele
             quicksort(a, 0, n - 1);
         }
     }
@@ -153,13 +153,11 @@ public class Oblig1 {
 
         quicksort(a, v, pivot - 1);
         quicksort(a, pivot + 1, h);
-
     }
 
     public static int partisjoner(int[] a, int v, int h, int pivot) {
 
         while (true) {
-
             while (v <= h && a[v] < pivot) {
                 v++;
             }
@@ -276,7 +274,6 @@ public class Oblig1 {
     I created empty arrays to be filled, and then –later– be displayed.
     */
     public static String flett(String s, String t) {
-
         // TODO this throw below me
         //throw new UnsupportedOperationException();
 
@@ -286,7 +283,6 @@ public class Oblig1 {
         char[] charArray_t = t.toCharArray();
 
         char[] outArray = new char[charArray_s.length + charArray_t.length];
-
 
         ///////
         int shortestLength = charArray_s.length;
@@ -322,7 +318,6 @@ public class Oblig1 {
             outArray[shortestLength * 2 + i] = restArray[i];
         }
 
-
         for (int i = 0; i < charArray_s.length; ++i) {
 
         }
@@ -341,7 +336,6 @@ public class Oblig1 {
 
         // TODO: make tests to see if it ACTUALLY works
 
-
         String out = "";
         int totalLength = 0;
         for (String str : s) {
@@ -355,8 +349,6 @@ public class Oblig1 {
                 }
             }
         }
-
-
         return out;
     }
 
@@ -399,7 +391,6 @@ public class Oblig1 {
         // the largest entry in a. This is a sorta hacky solution, to be sure, but it works.
 
         return indicesSorted;
-
     }
 
     ///// Oppgave 9 //////////////////////////////////////
@@ -440,7 +431,6 @@ public class Oblig1 {
             }
         }
 
-
         int[] indekser = {minIndex, nestMinIndex, tredjeMinIndex};
         return indekser;
     }
@@ -475,5 +465,4 @@ public class Oblig1 {
         }
         return true;
     }
-
 }  // Oblig1
