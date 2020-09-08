@@ -36,6 +36,26 @@ class Oblig1UnitTest {
         int[] a = {2, 4, 6, 14, 18, 22, 102, 10, 16, 12};
         Oblig1.delsortering(a);
         assertEquals(Arrays.toString(new int[]{2, 4, 6, 10, 12, 14, 16, 18, 22, 102}), Arrays.toString(a));
+
+        // Test kun selve sorteringen, men med negative
+        a = new int[]{2, 4, 6, 14, -18, 22, 102, -10, 16, 12};
+        Oblig1.delsortering(a);
+        assertEquals(Arrays.toString(new int[]{-18, -10, 2, 4, 6, 12, 14, 16, 22, 102}), Arrays.toString(a));
+
+        // Test med to tall, splitting av partall og oddetall
+        a = new int[]{2, 1};
+        Oblig1.delsortering(a);
+        assertEquals(Arrays.toString(new int[]{1, 2}), Arrays.toString(a));
+
+        // Full test
+        a = new int[]{2, 1, 3, 4, 19, 16};
+        Oblig1.delsortering(a);
+        assertEquals(Arrays.toString(new int[]{1, 3, 19, 2, 4, 16}), Arrays.toString(a));
+
+        // Full test med negative tall
+        a = new int[]{2, 1, 3, -4, 19, 16, -1};
+        Oblig1.delsortering(a);
+        assertEquals(Arrays.toString(new int[]{-1, 1, 3, 19, -4, 2, 16}), Arrays.toString(a));
     }
 
     @org.junit.jupiter.api.Test
