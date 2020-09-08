@@ -97,7 +97,6 @@ public class Oblig1 {
 
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
-        long tid = System.currentTimeMillis();
         int n = a.length;
 
         if (n < 2) {
@@ -144,9 +143,6 @@ public class Oblig1 {
         } else {
             quicksort(a, 0, n - 1);
         }
-
-        tid = System.currentTimeMillis() - tid;
-        System.out.println(tid + " ms");
     }
 
     public static void quicksort(int[] a, int v, int h) {
