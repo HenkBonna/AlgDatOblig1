@@ -103,7 +103,7 @@ class Oblig1UnitTest {
 
     @org.junit.jupiter.api.Test
     void bokstavNr() {
-        assertEquals(true, false, "Implementer bokstavNr og denne testen");
+        assertEquals(65, Oblig1.bokstavNr('A'));
     }
 
     @org.junit.jupiter.api.Test
