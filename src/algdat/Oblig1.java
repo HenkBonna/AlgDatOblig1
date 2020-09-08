@@ -468,17 +468,12 @@ public class Oblig1 {
             antallB[bokstavNr(b.charAt(i))]++;
         }
 
-        boolean matcherDet = false;
         for (int i = 0; i < antallA.length; i++) {
-            if (antallA[i] != 0) {
-                if (antallA[i] <= antallB[i]) {
-                    matcherDet = true;
-                } else {
-                    return false;
-                }
+            if (antallA[i] != 0 && antallA[i] > antallB[i]) {
+                return false;
             }
         }
-        return matcherDet;
+        return true;
     }
 
 }  // Oblig1
