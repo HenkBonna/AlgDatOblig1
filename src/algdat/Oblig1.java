@@ -354,11 +354,30 @@ public class Oblig1 {
 
     ///// Oppgave 10 //////////////////////////////////////
     public static int bokstavNr(char bokstav) {
-        throw new UnsupportedOperationException();
+        return bokstav;
     }
 
     public static boolean inneholdt(String a, String b) {
-        throw new UnsupportedOperationException();
+        int[] antallA = new int[256];
+        int[] antallB = new int[256];
+
+        // Tell opp bokstaver i a
+        for (int i = 0; i < a.length(); i++) {
+            antallA[bokstavNr(a.charAt(i))]++;
+        }
+
+        // Tell opp bokstaver i b
+        for (int i = 0; i < b.length(); i++) {
+            antallB[bokstavNr(b.charAt(i))]++;
+        }
+
+        for (int i = 0; i < antallA.length; i++) {
+            if (antallA[i] > antallB[i]) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
 }  // Oblig1
