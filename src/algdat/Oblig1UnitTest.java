@@ -2,7 +2,7 @@ package algdat;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Denne klassen kan du bruke til hjelp under utvikling av din oblig.
@@ -85,6 +85,8 @@ class Oblig1UnitTest {
 
     @org.junit.jupiter.api.Test
     void inneholdt() {
-        assertEquals(true, false, "Implementer inneholdt og denne testen");
+        // Tester oppgave 10
+        assertTrue(Oblig1.inneholdt("ABC", "AABBCD"));
+        assertFalse(Oblig1.inneholdt("ABCØ", "AABBCD"));
     }
 }
