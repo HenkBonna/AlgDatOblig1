@@ -12,4 +12,7 @@
 * Henrik: Oppg 7 og 8
 * Kristian: Oppg 4 og 10
 * Sander: Oppg 3 og 9
-* Patrik: Oppg 5 og 6
+* Patrick: Oppg 5 og 6
+
+## Utskrift av testprogram
+Ingen utskrift, alt fungerer!
