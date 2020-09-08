@@ -7,7 +7,6 @@ package algdat;
 // Patrick Snorreson Sletvold, s344102
 // Kristian Kasin Wang, s344088
 
-import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class Oblig1 {
@@ -452,7 +451,7 @@ public class Oblig1 {
     }
 
     public static boolean inneholdt(String a, String b) {
-        if (a.equals("")){  //En tom tegnstreng er inneholdt i alle andre ord, true.
+        if (a.equals("")) {  //En tom tegnstreng er inneholdt i alle andre ord, true.
             return true;
         }
 
@@ -476,12 +475,11 @@ public class Oblig1 {
         }
 
         boolean matcherDet = false;
-        for (int i = 0; i < antallA.length; i++){
-            if (antallA[i] != 0){
-                if (antallA[i] >= antallB[i]){
+        for (int i = 0; i < antallA.length; i++) {
+            if (antallA[i] != 0) {
+                if (antallA[i] >= antallB[i]) {
                     matcherDet = true;
-                }
-                else{
+                } else {
                     return false;
                 }
             }
