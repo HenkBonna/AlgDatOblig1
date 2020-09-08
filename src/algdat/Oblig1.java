@@ -447,7 +447,7 @@ public class Oblig1 {
     ///// Oppgave 10 //////////////////////////////////////
     public static int bokstavNr(char bokstav) {
         //throw new UnsupportedOperationException();
-        return -1
+        return -1;
     }
 
     public static boolean inneholdt(String a, String b) {
