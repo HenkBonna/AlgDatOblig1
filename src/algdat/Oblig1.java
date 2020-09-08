@@ -112,20 +112,20 @@ public class Oblig1 {
         //Hvis tabellen består kun av partall eller oddetall,
         //så sorteres hele tabellen, hvis ikke, så sorteres
         //hver sin side av tabellen, oddetall og partall separat.
-        if (!(oddetall == 0 || oddetall > n)){
+        if (!(oddetall == 0 || oddetall > n)) {
             int v = 0;
             int h = n - 1;
 
-            while (v < h){
-                while (Math.abs(a[v])%2 != 0) {
+            while (v < h) {
+                while (Math.abs(a[v]) % 2 != 0) {
                     v++;
-                    if (v == h){
+                    if (v == h) {
                         break;
                     }
                 }
                 while (Math.abs(a[h]) % 2 != 1 && h != v) {
                     h--;
-                    if (v == h){
+                    if (v == h) {
                         break;
                     }
                 }
@@ -141,21 +141,21 @@ public class Oblig1 {
         }
 
         tid = System.currentTimeMillis() - tid;
-        System.out.println(tid+" ms");
+        System.out.println(tid + " ms");
     }
 
     public static void quicksort(int[] a, int v, int h) {
         if (v >= h) {
             return;
         }
-        int pivot = partisjonerpivot(a, v, h, (v + h)/2);
+        int pivot = partisjonerpivot(a, v, h, (v + h) / 2);
 
         quicksort(a, v, pivot - 1);
         quicksort(a, pivot + 1, h);
 
     }
 
-    public static int partisjoner(int[] a, int v, int h, int pivot){
+    public static int partisjoner(int[] a, int v, int h, int pivot) {
 
         while (true) {
 
@@ -174,7 +174,7 @@ public class Oblig1 {
         }
     }
 
-    public static int partisjonerpivot(int[] a, int v, int h, int pivot){
+    public static int partisjonerpivot(int[] a, int v, int h, int pivot) {
         bytt(a, pivot, h);
         int pivotpos = partisjoner(a, v, h - 1, a[h]);
         bytt(a, pivotpos, h);
