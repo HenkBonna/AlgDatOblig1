@@ -101,7 +101,7 @@ public class Oblig1 {
         int oddetall = 0;
         for (int i = 0; i < a.length; i++) {
             // Teller opp antall oddetall
-            if (a[i] % 2 == 1) {
+            if (Math.abs(a[i] % 2) == 1) {
                 oddetall++;
             }
         }
@@ -111,9 +111,9 @@ public class Oblig1 {
         //hver sin side av tabellen, oddetall og partall separat.
         if (!(oddetall == 0 || oddetall > n)){
             for (int i = 0; i < oddetall; i++) {
-                if (a[i] % 2 != 1) {
+                if (Math.abs(a[i] % 2) != 1) {
                     for (int j = i + 1; j < n; j++) {
-                        if (a[j] % 2 == 1) {
+                        if (Math.abs(a[j] % 2) == 1) {
                             bytt(a, i, j);
                             break;
                         }
