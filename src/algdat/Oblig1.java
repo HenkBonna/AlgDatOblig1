@@ -451,6 +451,10 @@ public class Oblig1 {
     }
 
     public static boolean inneholdt(String a, String b) {
+        if (a.equals("")){  //En tom tegnstreng er inneholdt i alle andre ord, true.
+            return true;
+        }
+
         int[] antallA = new int[256];
         int[] antallB = new int[256];
 
