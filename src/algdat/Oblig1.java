@@ -105,10 +105,11 @@ public class Oblig1 {
             }
         }
 
+        //Hvis tabellen består kun av partall eller oddetall,
+        //så sorteres hele tabellen, hvis ikke, så sorteres
+        //hver sin side av tabellen, oddetall og partall separat.
         if (!(oddetall == 0 || oddetall > n)){
-
             for (int i = 0; i < oddetall; i++) {
-                //Hvis indeks ikke er oddetall
                 if (a[i] % 2 != 1) {
                     for (int j = i + 1; j < n; j++) {
                         if (a[j] % 2 == 1) {
@@ -127,40 +128,14 @@ public class Oblig1 {
             quicksort(a, 0, a.length-1);
         }
 
-        //Dette funker ikke, scrap it. Tar for lang tid.
-        /*
-        for (int i = 0; i < n - oddetall - 1; i++){  //Sorter oddetall i separat intervall
 
-                for (int j = 0; j < n - oddetall - 1; j++){
-
-                    if (a[j] > a[j+1]){
-                        int temp = a[j];
-                        a[j] = a[j+1];
-                        a[j+1] = temp;
-                    }
-                }
-            }
-            for (int i = oddetall; i < n - 1; i++){
-
-                for (int j = oddetall; j < n - 1; j++){     //Sorter partall i separat intervall
-
-                    if (a[j] > a[j+1]){
-                        int temp = a[j];
-                        a[j] = a[j+1];
-                        a[j+1] = temp;
-                    }
-                }
-            }
-        */
     }
 
     public static void quicksort(int[] a, int v, int h){
-        //Implementer
-
         if (v >= h){
             return;
         }
-        int pivot = partisjoner(a, v, h, a[(v + h)/2]);
+        int pivot = partisjonerpivot(a, v, h, (v + h)/2);
 
         quicksort(a, v, pivot - 1);
         quicksort(a, pivot + 1, h);
@@ -168,19 +143,18 @@ public class Oblig1 {
     }
 
     public static int partisjoner(int[] a, int v, int h, int pivot){
-        //Implementer
 
         while (true){
 
             while (v <= h && a[v] < pivot){
                 v++;
             }
-            while (v <= h && a[h] > pivot){
+            while (v <= h && a[h] >= pivot){
                 h--;
             }
 
             if (v < h){
-                bytt(a,v++,h--);
+                bytt(a, v++, h--);
             }
             else{
                 return v;
@@ -188,12 +162,19 @@ public class Oblig1 {
         }
     }
 
+    public static int partisjonerpivot(int[] a, int v, int h, int pivot){
+        bytt(a, pivot, h);
+        int pivotpos = partisjoner(a, v, h - 1, a[h]);
+        bytt(a, pivotpos, h);
+        return pivotpos;
+
+    }
+
     public static void bytt(int[] a, int i, int j) {
         int temp = a[i];
         a[i] = a[j];
         a[j] = temp;
     }
-
 
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
