@@ -135,7 +135,7 @@ public class Oblig1 {
         if (v >= h){
             return;
         }
-        int pivot = partisjoner(a, v, h, a[(v + h)/2]);
+        int pivot = partisjonerpivot(a, v, h, (v + h)/2);
 
         quicksort(a, v, pivot - 1);
         quicksort(a, pivot + 1, h);
@@ -143,7 +143,7 @@ public class Oblig1 {
     }
 
     public static int partisjoner(int[] a, int v, int h, int pivot){
-        //Implementer
+
         while (true){
 
             while (v <= h && a[v] < pivot){
@@ -160,6 +160,14 @@ public class Oblig1 {
                 return v;
             }
         }
+    }
+
+    public static int partisjonerpivot(int[] a, int v, int h, int pivot){
+        bytt(a, pivot, h);
+        int pivotpos = partisjoner(a, v, h - 1, a[h]);
+        bytt(a, pivotpos, h);
+        return pivotpos;
+
     }
 
     public static void bytt(int[] a, int i, int j) {
