@@ -26,7 +26,7 @@ public class Main {
         //int[] a = {6,10,16,11,7,12,3,8,9,5};
         //int[] a = {6,10,9,4,1,3,8,5,2,7};
         //int[] a = {1,3,5,9,19,13,21};
-        int[] a = Oblig1Test.randPerm(100000);
+        int[] a = Oblig1Test.randPerm(100_000);
 
         int[] indeks = Oblig1.indekssortering(a);
 

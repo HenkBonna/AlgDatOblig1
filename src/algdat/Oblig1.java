@@ -92,6 +92,7 @@ public class Oblig1 {
 
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
+        long tid = System.currentTimeMillis();
         int n = a.length;
 
         if (n < 2) {
@@ -108,7 +109,6 @@ public class Oblig1 {
             }
         }
 
-        long tid = System.currentTimeMillis();
         //Hvis tabellen består kun av partall eller oddetall,
         //så sorteres hele tabellen, hvis ikke, så sorteres
         //hver sin side av tabellen, oddetall og partall separat.
@@ -117,14 +117,19 @@ public class Oblig1 {
             int h = n - 1;
 
             while (v < h){
-                while (Math.abs(a[v])%2 != 0 && v > 0) {
+                while (Math.abs(a[v])%2 != 0) {
                     v++;
+                    if (v == h){
+                        break;
+                    }
                 }
-                while (Math.abs(a[h])%2 != 1 && h < n) {
+                while (Math.abs(a[h]) % 2 != 1 && h != v) {
                     h--;
+                    if (v == h){
+                        break;
+                    }
                 }
                 bytt(a, v, h);
-                v++; h--;
             }
 
             // Sorter venstre/oddetall
@@ -136,7 +141,7 @@ public class Oblig1 {
         }
 
         tid = System.currentTimeMillis() - tid;
-        System.out.println(tid +" ms for odde/partall");
+        System.out.println(tid+" ms");
     }
 
     public static void quicksort(int[] a, int v, int h) {
@@ -174,7 +179,6 @@ public class Oblig1 {
         int pivotpos = partisjoner(a, v, h - 1, a[h]);
         bytt(a, pivotpos, h);
         return pivotpos;
-
     }
 
     public static void bytt(int[] a, int i, int j) {
