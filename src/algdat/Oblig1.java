@@ -274,11 +274,6 @@ public class Oblig1 {
     I created empty arrays to be filled, and then –later– be displayed.
     */
     public static String flett(String s, String t) {
-        // TODO this throw below me
-        //throw new UnsupportedOperationException();
-
-        // TODO: make tests to see if it ACTUALLY works
-
         char[] charArray_s = s.toCharArray();
         char[] charArray_t = t.toCharArray();
 
@@ -330,12 +325,6 @@ public class Oblig1 {
 
     /// 7b)
     public static String flett(String... s) {
-
-        //TODO this throw below me
-        //throw new UnsupportedOperationException();
-
-        // TODO: make tests to see if it ACTUALLY works
-
         String out = "";
         int totalLength = 0;
         for (String str : s) {
@@ -354,12 +343,6 @@ public class Oblig1 {
 
     ///// Oppgave 8 - Henk //////////////////////////////////////
     public static int[] indekssortering(int[] a) {
-
-        // TODO: implement this throw
-        // throw new UnsupportedOperationException();
-
-        // TODO: make tests to see if it ACTUALLY works
-
         if (a.length == 0) {
             return new int[]{};
         } else if (a.length == 1) {
