@@ -446,11 +446,18 @@ public class Oblig1 {
 
     ///// Oppgave 10 //////////////////////////////////////
     public static int bokstavNr(char bokstav) {
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
+        return -1
     }
 
     public static boolean inneholdt(String a, String b) {
-        throw new UnsupportedOperationException();
+        ///throw new UnsupportedOperationException();
+
+        if (a.equals("")){  //En tom tegnstreng er inneholdt i alle andre ord, true.
+            return true;
+        }
+
+        return false;
     }
 
 }  // Oblig1
