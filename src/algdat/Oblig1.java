@@ -1,6 +1,11 @@
 package algdat;
 
-////// Losningsforslag Oblig 1 ////////////////////////
+////// Losning Oblig 1 ////////////////////////
+// Sander Tøien, s344045
+// Mats Ove Vada, s340363
+// Henrik Berhard Stangelang, s344104
+// Patrick Snorreson Sletvold, s344102
+// Kristian Kåsin Wang, s344088
 
 import java.util.NoSuchElementException;
 
