@@ -92,15 +92,16 @@ public class Oblig1 {
 
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
-        //throw new UnsupportedOperationException();
         int n = a.length;
 
-        if(n < 2){      //Hvis tabellen har mindre enn 2 elementer så gjøres ingen ting
+        if (n < 2) {
+            // Hvis tabellen har mindre enn 2 elementer så gjøres ingen ting
             return;
         }
         int oddetall = 0;
-        for (int i = 0; i < a.length; i++){         //Teller opp antall oddetall
-            if (a[i]% 2 == 1){
+        for (int i = 0; i < a.length; i++) {
+            // Teller opp antall oddetall
+            if (a[i] % 2 == 1) {
                 oddetall++;
             }
         }
@@ -113,26 +114,26 @@ public class Oblig1 {
                 if (a[i] % 2 != 1) {
                     for (int j = i + 1; j < n; j++) {
                         if (a[j] % 2 == 1) {
-                            int temp = a[i];
-                            a[i] = a[j];
-                            a[j] = temp;
+                            bytt(a, i, j);
                             break;
                         }
                     }
                 }
             }
+
+            // Sorter venstre/oddetall
             quicksort(a, 0, oddetall - 1);
-            quicksort(a, oddetall, n-1);
-        }
-        else{
-            quicksort(a, 0, a.length-1);
+            // Sorter høyre/partall
+            quicksort(a, oddetall, n - 1);
+        } else {
+            quicksort(a, 0, a.length - 1);
         }
 
 
     }
 
-    public static void quicksort(int[] a, int v, int h){
-        if (v >= h){
+    public static void quicksort(int[] a, int v, int h) {
+        if (v >= h) {
             return;
         }
         int pivot = partisjonerpivot(a, v, h, (v + h)/2);
@@ -144,19 +145,18 @@ public class Oblig1 {
 
     public static int partisjoner(int[] a, int v, int h, int pivot){
 
-        while (true){
+        while (true) {
 
-            while (v <= h && a[v] < pivot){
+            while (v <= h && a[v] < pivot) {
                 v++;
             }
-            while (v <= h && a[h] >= pivot){
+            while (v <= h && a[h] >= pivot) {
                 h--;
             }
 
-            if (v < h){
+            if (v < h) {
                 bytt(a, v++, h--);
-            }
-            else{
+            } else {
                 return v;
             }
         }
