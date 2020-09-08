@@ -32,7 +32,10 @@ class Oblig1UnitTest {
 
     @org.junit.jupiter.api.Test
     void delsortering() {
-        assertEquals(true, false, "Implementer delsortering og denne testen");
+        // Test kun selve sorteringen, ikke partall/oddetall
+        int[] a = {2, 4, 6, 14, 18, 22, 102, 10, 16, 12};
+        Oblig1.delsortering(a);
+        assertEquals(Arrays.toString(new int[]{2, 4, 6, 10, 12, 16, 14, 18, 22, 102}), Arrays.toString(a));
     }
 
     @org.junit.jupiter.api.Test
