@@ -313,9 +313,6 @@ public class Oblig1 {
             outArray[shortestLength * 2 + i] = restArray[i];
         }
 
-        for (int i = 0; i < charArray_s.length; ++i) {
-
-        }
         String out = "";
         for (char c : outArray) {
             out += c;
