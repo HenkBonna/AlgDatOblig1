@@ -15,4 +15,5 @@
 * Patrick: Oppg 5 og 6
 
 ## Utskrift av testprogram
+
 Ingen utskrift, alt fungerer!
