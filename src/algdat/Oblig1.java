@@ -414,8 +414,7 @@ public class Oblig1 {
             }
         }
 
-        int[] indekser = {minIndex, nestMinIndex, tredjeMinIndex};
-        return indekser;
+        return new int[]{minIndex, nestMinIndex, tredjeMinIndex};
     }
 
     ///// Oppgave 10 //////////////////////////////////////
